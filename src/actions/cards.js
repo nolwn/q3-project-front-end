@@ -1,8 +1,15 @@
+import mtg from 'mtgsdk';
 export const SEARCH_CARDS = "SEARCH_CARDS";
 
-export function findCard(card) {
-    return{
-        type: SEARCH_CARDS,
-        payload : card
-    }
-};
+export const findCard = name =>
+  async dispatch => {
+    const response = await mtg.card.where({name, gameFormat:'standard'})
+    dispatch({
+      action: SEARCH_CARDS,
+      payload: response
+    })
+  };
+
+  export const showModal = () => {
+      
+  }

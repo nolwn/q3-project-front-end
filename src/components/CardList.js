@@ -1,7 +1,8 @@
-import React from 'react'
-import CardData from './CardData.js'
+import React from 'react';
+import CardData from './CardData.js';
+import { connect } from 'react-redux';
 
-export default function cardRow(props) {
+function cardRow(props) {
     const cards = props.foundCards;
 
     return (
@@ -12,4 +13,12 @@ export default function cardRow(props) {
         </div>
     )
 
-}
+};
+
+const mapStateToProps = (state) => {
+    return {
+      cards: state.cards
+    }
+  };
+  
+  export default connect(mapStateToProps, null)(cardRow);

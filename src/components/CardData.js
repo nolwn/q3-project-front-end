@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './CardData.css';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
+import { toggleModal} from '../actions/cards.js';
 
-export default class CardData extends Component {
+class CardData extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -104,3 +106,17 @@ export default class CardData extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+      isOpen: state.isOpen
+    }
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      dispatch
+    }
+  }
+  export default connect(mapStateToProps, mapDispatchToProps)(CardData);
+  
