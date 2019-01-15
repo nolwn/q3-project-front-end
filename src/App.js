@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import mtg from 'mtgsdk';
-import SearchForm from './SearchForm.js';
-import CardList from './CardList.js';
+import SearchForm from './components/SearchForm.js';
+import CardList from './components/CardList.js';
 
 class App extends Component {
   constructor(props) {

@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { searchCards } from '../actions/cards.js';
+import { bindActionCreators } from 'redux';
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
     constructor(props) {
         super(props)
 
@@ -28,3 +31,14 @@ export default class SearchForm extends Component {
     }
 
 }
+
+const mapStateToProps = (state) => {
+    return {
+      name: state.name
+    }
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({searchCards}, dispatch)
+  }
+  export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
