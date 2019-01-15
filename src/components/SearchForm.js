@@ -22,7 +22,7 @@ class SearchForm extends Component {
         return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <form className="form-inline my-2 my-lg-0" onSubmit={(event) => { event.preventDefault()
-                findCards(this.state.name)}}>
+                this.props.findCards(this.state.name)}}>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Books by ID</button>  
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" name="bookID" value={this.state.name} onChange={this.handleChange} aria-label="Search"/>
             </form>
