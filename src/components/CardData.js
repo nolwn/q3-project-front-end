@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import './CardData.css';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { showModal, hideModal} from '../actions/cards.js';
 
 class CardData extends Component {
@@ -66,13 +67,13 @@ class CardData extends Component {
             <div className="row border">
                 <div className="col-3"><b><a onClick={(event) =>
                     {event.preventDefault() 
-                    showModal()}
+                    this.props.showModal()}
                     } href="#">{this.props.cardData.name}</a></b></div>
-                    <Modal isOpen={this.state.isOpen} onRequestClose={hideModal} style={customStyles} contentLabel="Example Modal">
+                    <Modal isOpen={this.state.isOpen} onRequestClose={this.props.hideModal()} style={customStyles} contentLabel="Example Modal">
                         <div className="Container">
                             <div className = "row border-bottom justify-content-end">
                                 <div className="col-2">
-                                    <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={hideModal}>X</button>
+                                    <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={this.props.hideModal()}>X</button>
                                 </div>
                             </div>
                             <div className = "row border-bottom">
@@ -101,10 +102,9 @@ const mapStateToProps = (state) => {
     }
   };
   
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      dispatch
-    }
-  }
-  export default connect(mapStateToProps, mapDispatchToProps)(CardData);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({showModal, hideModal}, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardData);
   

@@ -7,6 +7,7 @@ export const HIDE_MODAL = "HIDE_MODAL";
     return async (dispatch) => {
         try {
             const response = await mtg.card.where({name, gameFormat:'standard'})
+            console.log(response)
             dispatch({
                 type: SEARCH_CARDS,
                 payload: response
@@ -17,16 +18,17 @@ export const HIDE_MODAL = "HIDE_MODAL";
     }
 };
 
-  export const showModal = () => {
+export function showModal() {
     return {
         type: SHOW_MODAL,
         payload: true
       }
-  };
+};
 
-  export const hideModal = () => {
-      return{
-          type: HIDE_MODAL,
-          payload: false
-      }
-  };
+export function hideModal() {
+    return{
+        type: HIDE_MODAL,
+        payload: false
+    }
+
+};
