@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './CardData.css';
+// import './CardData.css';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { toggleModal} from '../actions/cards.js';
+import { showModal, hideModal} from '../actions/cards.js';
 
 class CardData extends Component {
     constructor(props) {
@@ -11,18 +11,6 @@ class CardData extends Component {
             isOpen: false
         }
     }
-
-    closeModal = () => {
-        this.setState({
-            isOpen: false
-        });
-      };
-
-      openModal = () => {
-          this.setState({
-              isOpen: true
-          })
-      };
 
     generateManaTags(element) {
         const type ={
@@ -78,13 +66,13 @@ class CardData extends Component {
             <div className="row border">
                 <div className="col-3"><b><a onClick={(event) =>
                     {event.preventDefault() 
-                    this.openModal()}
+                    showModal()}
                     } href="#">{this.props.cardData.name}</a></b></div>
-                    <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal} style={customStyles} contentLabel="Example Modal">
+                    <Modal isOpen={this.state.isOpen} onRequestClose={hideModal} style={customStyles} contentLabel="Example Modal">
                         <div className="Container">
                             <div className = "row border-bottom justify-content-end">
                                 <div className="col-2">
-                                    <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={this.closeModal}>X</button>
+                                    <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={hideModal}>X</button>
                                 </div>
                             </div>
                             <div className = "row border-bottom">

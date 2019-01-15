@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchCards } from '../actions/cards.js';
+import { findCards } from '../actions/cards.js';
 import { bindActionCreators } from 'redux';
 
 class SearchForm extends Component {
@@ -22,7 +22,7 @@ class SearchForm extends Component {
         return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <form className="form-inline my-2 my-lg-0" onSubmit={(event) => { event.preventDefault()
-                this.props.findCard(this.state.name)}}>
+                findCards(this.state.name)}}>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Books by ID</button>  
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" name="bookID" value={this.state.name} onChange={this.handleChange} aria-label="Search"/>
             </form>
@@ -39,6 +39,6 @@ const mapStateToProps = (state) => {
   };
   
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({searchCards}, dispatch)
+    return bindActionCreators({findCards}, dispatch)
   }
   export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
