@@ -4,6 +4,7 @@ import './App.css';
 import SearchForm from './components/SearchForm.js';
 import CardList from './components/CardList.js';
 import ListofDecks from './components/ListofDecks.js';
+import LoginForm from './components/LoginForm'
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -20,17 +21,15 @@ class App extends Component {
       <BrowserRouter>
       <div className='container'>
           <div className="row" >
-            <div className="col-5 border bg-light">
-            <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
+            <div className="col border bg-light">
+            {/* <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
               <SearchForm />
-              <CardList foundCards = {this.props.cards} />
-            </div>
-            <div className="col-5 border bg-light">
+              <CardList foundCards = {this.props.cards} /> */}
               <Switch>
-                <Route path='/login'/>
+                <Route path='/login' component={LoginForm}/>
                 <Route path='/user_id/:user_id/decks' component={ListofDecks}/>
               </Switch>
-            </div>
+              </div>
           </div> 
       </div>
     </BrowserRouter>

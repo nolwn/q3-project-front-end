@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger'
 import thunk from 'redux-thunk';
 import decks from './reducers/decks';
 import cards from './reducers/cards';
-// import authentication from './reducers/authentication';
+import auth from './reducers/authentication';
 
 //combineReducers
-const reducers = combineReducers({cards, decks})
+const reducers = combineReducers({auth, cards, decks})
 
-export default createStore(reducers, applyMiddleware(thunk))
+export default createStore(reducers, applyMiddleware(thunk, logger))
