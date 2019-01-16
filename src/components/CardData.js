@@ -41,9 +41,10 @@ class CardData extends Component {
     }
 
     generateManaCost(cost) {
+        if(cost === 0) return "0";
         const points = cost.replace(/[^A-Z0-9 ]/g, "");
         const displayCosts = points.split('')
-        return displayCosts.map((point, id) => this.generateManaTags(point, id))
+        return displayCosts.map((point, id) => this.generateManaTags(point, id));
     };
 
     setModal = (isOpen) => {
@@ -51,7 +52,7 @@ class CardData extends Component {
     };
 
     render() {
-        const manaCost = this.props.cardData.manaCost;
+        const manaCost = this.props.cardData.manaCost || 0;
         const customStyles = {
             content : {
               top                   : '50%',
@@ -65,7 +66,6 @@ class CardData extends Component {
             }
           };
 
-          console.log(this.props.cardData)
         return (
             <div className="row border align-items-center">
                 <div className="col"><b><a onClick={(event) =>
