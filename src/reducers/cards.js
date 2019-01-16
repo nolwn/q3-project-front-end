@@ -1,4 +1,4 @@
-import {SEARCH_CARDS, SHOW_MODAL, HIDE_MODAL} from '../actions/cards.js';
+import {SEARCH_CARDS} from '../actions/cards.js';
 
 const initialState = [
 
