@@ -85,7 +85,7 @@ class CardData extends Component {
                                 </div>
                             </div>
                             <div className = "row justify-content-center">
-                                <div className="col align-self-center">
+                                <div className="col-8 align-self-center">
                                     <button style={{marginTop: 5}} type="button" className="btn btn-success">Add Card to Deck</button>
                                 </div>
                             </div>      
