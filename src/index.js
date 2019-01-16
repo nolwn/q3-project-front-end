@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import Modal from 'react-modal'
 
-Modal.setAppElement('#root')
+Modal.setAppElement(document.querySelector('#root'))
 
 
 ReactDOM.render(
