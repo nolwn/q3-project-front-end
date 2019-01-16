@@ -1,7 +1,5 @@
 import mtg from 'mtgsdk';
 export const SEARCH_CARDS = "SEARCH_CARDS";
-export const SHOW_MODAL = "SHOW_MODAL";
-export const HIDE_MODAL = "HIDE_MODAL";
 
   export function findCards(name) {
     return async (dispatch) => {
@@ -16,17 +14,3 @@ export const HIDE_MODAL = "HIDE_MODAL";
         }
     }
 };
-
-  export const showModal = () => {
-    return {
-        type: SHOW_MODAL,
-        payload: true
-      }
-  };
-
-  export const hideModal = () => {
-      return{
-          type: HIDE_MODAL,
-          payload: false
-      }
-  };

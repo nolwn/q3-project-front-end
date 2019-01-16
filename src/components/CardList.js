@@ -8,7 +8,7 @@ function cardRow(props) {
     return (
         <div className="container">
         {
-            cards.slice(0,20).map(card => <CardData cardData={card} key= {card.id} />)
+            cards.slice(0,20).map(card => <CardData key={card.id} cardData={card} key= {card.id} />)
             }
         </div>
     )

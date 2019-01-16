@@ -8,6 +8,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import store from './store.js';
 import { Provider } from 'react-redux';
 
+import Modal from 'react-modal'
+
+Modal.setAppElement(document.querySelector('#root'))
+
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
