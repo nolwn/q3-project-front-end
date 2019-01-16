@@ -11,12 +11,12 @@ class ListofDecks extends Component {
     }
 
     componentDidMount() {
-        this.props.getDecks(2);
+        this.props.getDecks(this.props.match.params.user_id);
     }
 
     render() {
         const decks = this.props.decks;
-        const user = this.props.decks[0] || "test"
+        const user = this.props.decks[0] || "test";
         return(
             <div className="container">
             <h2>{user.user_name}'s Decks</h2> <span>Click Deck Name to Edit</span>
