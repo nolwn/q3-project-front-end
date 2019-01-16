@@ -44,11 +44,11 @@ class CardData extends Component {
         const points = cost.replace(/[^A-Z0-9 ]/g, "");
         const displayCosts = points.split('')
         return displayCosts.map((point, id) => this.generateManaTags(point, id))
-    }
+    };
 
     setModal = (isOpen) => {
         this.setState({ isOpen })
-    }
+    };
 
     render() {
         const manaCost = this.props.cardData.manaCost;
@@ -96,7 +96,7 @@ class CardData extends Component {
             </div>
         )
     }
-}
+};
 
 export default CardData;
   
