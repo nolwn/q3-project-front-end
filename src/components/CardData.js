@@ -64,6 +64,8 @@ class CardData extends Component {
               border                : 3
             }
           };
+
+          console.log(this.props.cardData)
         return (
             <div className="row border">
                 <div className="col-3"><b><a onClick={(event) =>
@@ -91,7 +93,7 @@ class CardData extends Component {
                     </Modal>
                 <div className="col-3"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
                 <div className="col-3"><b>Color: </b>{this.props.cardData.colors}</div>
-                <div className="col-3"><b>Type: </b>{this.props.cardData.type}</div>
+                <div className="col-3"><b>Set: </b>{this.props.cardData.setName}</div>
             </div>
         )
     }
