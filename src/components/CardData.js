@@ -21,19 +21,19 @@ class CardData extends Component {
 
         switch (element) {
             case "R":
-                return (<img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/87/R.svg?version=3b5a5cc001a7ae6282b24606e9e99715' alt="fire" height="15" width="15" />)
+                return (<img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/87/R.svg?version=3b5a5cc001a7ae6282b24606e9e99715' alt="fire" height="20" width="20" />)
 
             case "U":
-                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/9/9f/U.svg?version=99a0e26dd02040b072e33af91a6ab198' alt="water" height="15" width="15" />
+                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/9/9f/U.svg?version=99a0e26dd02040b072e33af91a6ab198' alt="water" height="20" width="20" />
                 
             case "G":
-                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/88/G.svg?version=6ebca1fee33aaf3c3fc1cd39a4f782df' alt="life" height="15" width="15" />
+                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/88/G.svg?version=6ebca1fee33aaf3c3fc1cd39a4f782df' alt="life" height="20" width="20" />
                 
             case "W":
-                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/8e/W.svg?version=6e6c411768c4bf5a947dfa973207799b' alt="light" height="15" width="15" />
+                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/8e/W.svg?version=6e6c411768c4bf5a947dfa973207799b' alt="light" height="20" width="20" />
                 
             case "B":
-                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/2/2f/B.svg?version=0a87a78acd60c4f2074a0c9e4eb651a5' alt="dark" height="15" width="15" />
+                return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/2/2f/B.svg?version=0a87a78acd60c4f2074a0c9e4eb651a5' alt="dark" height="20" width="20" />
     
             default:
                 return <span key={id} className="label label-warning"><b>{element}</b></span>
@@ -61,18 +61,18 @@ class CardData extends Component {
               marginRight           : '-25%',
               transform             : 'translate(-50%, -50%)',
               backgroundColor       :  "gray",
-              border                : 3
+              border                : "2px black solid"
             }
           };
 
           console.log(this.props.cardData)
         return (
-            <div className="row border">
-                <div className="col-3"><b><a onClick={(event) =>
+            <div className="row border align-items-center">
+                <div className="col"><b><a onClick={(event) =>
                     {event.preventDefault() 
                     this.setModal(true) }
                     } href="#">{this.props.cardData.name}</a></b></div>
-                    <Modal isOpen={this.state.isOpen} onRequestClose={e => this.setModal(false)} style={customStyles} contentLabel="Example Modal">
+                    <Modal isOpen={this.state.isOpen} onRequestClose={() => this.setModal(false)} style={customStyles} contentLabel="Example Modal">
                         <div className="Container">
                             <div className = "row border-bottom justify-content-end">
                                 <div className="col-2">
@@ -91,9 +91,8 @@ class CardData extends Component {
                             </div>      
                         </div>
                     </Modal>
-                <div className="col-3"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col-3"><b>Color: </b>{this.props.cardData.colors}</div>
-                <div className="col-3"><b>Set: </b>{this.props.cardData.setName}</div>
+                <div className="col"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
+                <div className="col"><button className="btn btn-sm btn-outline-primary">+</button> </div>
             </div>
         )
     }

@@ -8,9 +8,13 @@ import { connect } from 'react-redux'
 const App = ({ cards }) => (
   <div className="App">
     <div className='container'>
-      <h1>MTG Card Finder</h1>
-        <SearchForm />
-        <CardList foundCards = {cards} />
+        <div className="row" >
+          <div className="col-5 border bg-light">
+          <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
+            <SearchForm />
+            <CardList foundCards = {cards} />
+          </div>
+        </div> 
     </div>
   </div>
 );
