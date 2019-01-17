@@ -50,7 +50,7 @@ export const createUser = (user_name, password, fn) => {
       dispatch(setAuthentication(null))
     }
   }
-}
+};
 
 export const login = (user_name, password, fn) => {
   return async (dispatch) => {
