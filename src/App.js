@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
-import SearchForm from './components/SearchForm.js';
-import CardList from './components/CardList.js';
 import ListofDecks from './components/ListofDecks.js';
-import { connect } from 'react-redux';
+import LoginForm from './components/LoginForm';
+import AuthenticatedRoute from './higherOrderComponents/authenticatedRoute';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {verifyUser} from './actions/authentication';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-
+    this.props.verifyUser()
   }
 
   render() {
@@ -20,24 +22,27 @@ class App extends Component {
       <BrowserRouter>
       <div className='container'>
           <div className="row" >
-            <div className="col-5 border bg-light">
-            <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
+            <div className="col border bg-light">
+            {/* <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
               <SearchForm />
-              <CardList foundCards = {this.props.cards} />
-            </div>
-            <div className="col-5 border bg-light">
+              <CardList foundCards = {this.props.cards} /> */}
               <Switch>
-                <Route path='/login'/>
-                <Route path='/user_id/:user_id/decks' component={ListofDecks}/>
+                <Route path='/login' component={LoginForm}/>
+                <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
               </Switch>
-            </div>
+              </div>
           </div> 
       </div>
     </BrowserRouter>
     )}
 };
 
-const mapStateToProps = ({ cards }) => ({ cards })
+const mapStateToProps = ({ cards }) => ({ cards });
 
-export default connect(mapStateToProps, null)(App)
+const mapDispatchToProps = dispatch => 
+bindActionCreators({
+  verifyUser,
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
