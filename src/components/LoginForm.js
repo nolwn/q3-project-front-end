@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setAuthentication, login } from '../actions/authentication';
+import { setAuthentication, login, createUser } from '../actions/authentication';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -15,6 +15,12 @@ class LoginForm extends Component {
         this.props.login(event.target.loginName.value, event.target.loginPassword.value,
             () => this.props.history.push(`/user_id/${this.props.userId}/decks`))
 
+    };
+
+    handleCreateUser = (event) => {
+        event.preventDefault();
+        this.props.createUser(event.target.createUser.value, event.target.createPassword.value,
+            () => this.props.history.push(`/user_id/${this.props.userId}/decks`));
     }
 
     render() {
@@ -39,18 +45,18 @@ class LoginForm extends Component {
                     </form>
                 </div>
                 <div className="col-6">
-                    <form>
+                    <form onSubmit={this.handleCreateUser}>
                         <h2>New Account</h2>
                         <div className="form-row">
                             <div className="form-group col-6">
                                 <label for="createUser">User Name</label>
-                                <input type="text" className="form-control form-control-sm" id="createUser" placeholder="Enter User Name"/>
+                                <input type="text" className="form-control form-control-sm" name="createUser" id="createUser" placeholder="Enter User Name"/>
                             </div>
                         </div>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
                                     <label for="createPassword">Password</label>
-                                    <input type="password" className="form-control form-control-sm" id="createPassword" placeholder="Enter Password"/>
+                                    <input type="password" className="form-control form-control-sm" name="createPassword" id="createPassword" placeholder="Enter Password"/>
                                 </div>
                             </div>
                         <button type="submit" className="btn btn-primary">Create Account</button>
@@ -68,7 +74,8 @@ const mapStateToProps = state => ({
   const mapDispatchToProps = dispatch => 
     bindActionCreators({
       setAuthentication,
-      login
+      login,
+      createUser
     }, dispatch)
   
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))
