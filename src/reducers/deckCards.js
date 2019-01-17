@@ -1,4 +1,4 @@
-import none from '../actions/deckCards'
+import { DECREMENT } from '../actions/deckCards'
 
 const initialState = [
     {
@@ -256,7 +256,19 @@ const initialState = [
 
 const deckCards = (state = initialState, action) => {
     switch (action.type) {
+        case DECREMENT:
+            const id = action.payload.id
+            const qty = action.payload.qty
+
+            const newState = { ...state }
+            const index = newState.findIndex(card => card.id === id)
+
+            newState[index].qty = qty
+
+            return newState
+
         default:
+            console.log("state", state)
             return state
     }
 }

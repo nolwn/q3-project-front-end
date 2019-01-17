@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import cards from '../utilities/utilities'
+import QtyButtons from './QtyButtons'
+import { decrement } from '../actions/deckCards'
 
-export default class DeckCards extends Component {
+class DeckCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -84,8 +87,10 @@ export default class DeckCards extends Component {
 
         return (
             <div>
-                <button>-</button>
-                <button>+</button>
+                <QtyButtons
+                    qty={ this.props.card.qty }
+                    data-cardId = { this.props.card.id }
+                    />
                 { this.props.card.qty } x
                 { this.props.card.name }
                 <span className='card-cost'>{ this.getCost() }</span>
@@ -93,3 +98,8 @@ export default class DeckCards extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators({ decrement }, dispatch)
+
+export default connect(null, mapDispatchToProps)(DeckCard)

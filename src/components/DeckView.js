@@ -9,9 +9,7 @@ import CardList from './CardList'
 import CurveGraph from './CurveGraph'
 import DeckCards from './DeckCards'
 
-import test from '../actions/deckCards'
-
-console.log(test)
+import { decrement } from '../actions/deckCards'
 
 const server = process.env.REACT_APP_API_URL
 
@@ -22,9 +20,7 @@ class CardView extends Component {
                 console.log(data)
             })
 
-        // this.props.dispatch(test)
         console.log('props:', this.props)
-        this.props.test()
     }
 
     render = () =>
@@ -52,9 +48,9 @@ class CardView extends Component {
         </div>
 }
 
-const mapStateToProps = ({ cards }) => ({ cards })
+const mapStateToProps = (state) => (state)
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ test }, dispatch)
+  return bindActionCreators({ decrement }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardView)

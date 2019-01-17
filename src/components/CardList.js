@@ -20,5 +20,5 @@ const mapStateToProps = (state) => {
       cards: state.cards
     }
   };
-  
+
   export default connect(mapStateToProps, null)(cardRow);
