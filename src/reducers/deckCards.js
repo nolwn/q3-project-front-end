@@ -265,7 +265,7 @@ const deckCards = (state = initialState, action) => {
             const newState = state.slice(0)
             const index = newState.findIndex(card => card.id === id)
 
-            console.log("index", newState[index])
+            console.log("index", id)
 
 
             newState[index].qty = qty

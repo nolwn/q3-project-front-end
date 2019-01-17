@@ -8,14 +8,16 @@ const handleDecrement = () => {
     decrement(1, 1, 1)
 }
 
-const QtyButtons = (props) =>
-    props.qty > 1 ?
+const QtyButtons = (props) => {
+    console.log("poops", props)
+
+    return props.qty > 1 ?
         <span className='qtyButtons'>
-            <button onClick = { e => props.decrement(1, 1, 1) }>-</button>
+            <button onClick = { e => props.decrement(1, 1, props.id) }>-</button>
             <button>+</button>
         </span> :
         <button className='qtyButtons'>remove</button>
-
+}
 // const mapStateToProps = ({ cards }) => ({ cards })
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators({ decrement }, dispatch)

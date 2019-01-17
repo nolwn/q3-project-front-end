@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const DECREMENT = 'DECREMENT'
 export const DECKCARDS = 'DECKCARDS'
+export const ADDDECKCARD = 'ADDDECKCARD'
 
 const server = process.env.REACT_APP_API_URL
 
@@ -33,6 +34,18 @@ export const decrement = (userId, deckId, cardId) => {
             )
             console.log('response', response.data)
             dispatch({ type: DECREMENT, payload: response.data })
+    }
+}
+
+export const addCard = (userId, deckId, types, api_id, name) => {
+    return async (dispatch) => {
+        const reponse = await axios.post(
+            server +
+            '/users/' + userId +
+            '/decks/' + deckId +
+            'cards/create'
+        )
+        dispatch({ type: ADDDECKCARD })
     }
 }
 
