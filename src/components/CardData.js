@@ -67,8 +67,8 @@ class CardData extends Component {
           };
 
         return (
-            <div className="row border align-items-center">
-                <div className="col"><b><a onClick={(event) =>
+            <div className="row border align-items-center justify-content-around">
+                <div className="col-4"><b><a onClick={(event) =>
                     {event.preventDefault() 
                     this.setModal(true) }
                     } href="#">{this.props.cardData.name}</a></b></div>
@@ -91,8 +91,8 @@ class CardData extends Component {
                             </div>      
                         </div>
                     </Modal>
-                <div className="col"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col"><button className="btn btn-sm btn-outline-primary">+</button> </div>
+                <div className="col-6"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
+                <div className="col-2"><button className="btn btn-sm btn-outline-primary">+</button> </div>
             </div>
         )
     }

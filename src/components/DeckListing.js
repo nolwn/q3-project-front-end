@@ -1,9 +1,11 @@
 import React from 'react';
-import {deleteDeck} from '../actions/decks';
+import {Link, withRouter} from 'react-router-dom';
+import {deleteDeck, viewDeck} from '../actions/decks';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-function DeckListing({id, deck_name, win_count, loss_count, user_id, deleteDeck}) {
+function DeckListing({id, deck_name, win_count, loss_count, user_id, deleteDeck, match}) {
+    console.log(match)
     return (
         <div style={{marginBottom: 5}} className="collection-item">
         <div className="row border text-white bg-dark">
@@ -14,7 +16,7 @@ function DeckListing({id, deck_name, win_count, loss_count, user_id, deleteDeck}
            
         </div>
         <div className="row border bg-light">
-            <div className="col-md-4 align-self-center"><h5>{deck_name}</h5></div>
+            <div className="col-md-4 align-self-center"><Link to={`${match.url}/${id}`} >{deck_name}</Link> </div>
             <div className="col-md-3 align-self-center"><h5>{win_count} </h5></div>
             <div className="col-md-3 align-self-center"><h5>{loss_count} </h5></div>
         </div>
@@ -26,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({deleteDeck},dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(DeckListing)
+export default withRouter(connect(null, mapDispatchToProps)(DeckListing))

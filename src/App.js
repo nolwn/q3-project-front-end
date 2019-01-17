@@ -4,6 +4,7 @@ import './App.css';
 import ListofDecks from './components/ListofDecks.js';
 import LoginForm from './components/LoginForm';
 import AuthenticatedRoute from './higherOrderComponents/authenticatedRoute';
+import DeckView from './components/DeckView';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {verifyUser} from './actions/authentication';
@@ -27,6 +28,7 @@ class App extends Component {
               <SearchForm />
               <CardList foundCards = {this.props.cards} /> */}
               <Switch>
+                <AuthenticatedRoute path='/user_id/:user_id/decks/:deck_id' component={DeckView} />
                 <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
                 <Route path='/' component={LoginForm}/>
               </Switch>

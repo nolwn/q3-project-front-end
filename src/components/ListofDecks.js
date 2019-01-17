@@ -28,6 +28,10 @@ class ListofDecks extends Component {
             );
     }
 
+    viewDecks = () => {
+        // this.push.history.push(`user/${this.props.match.params.user_id}/decks/${}`)
+    }
+
     componentDidMount() {
         this.props.getDecks(this.props.match.params.user_id, () => this.props.history.push('/'));
     }
