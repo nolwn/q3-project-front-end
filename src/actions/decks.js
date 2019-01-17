@@ -31,7 +31,7 @@ export function createDeck(deck_name, deck_wins, deck_losses, user_id) {
     return async (dispatch) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios(`${url}/users/${user_id}/decks`,
+            await axios(`${url}/users/${user_id}/decks`,
             {
                 method: "post",
                 headers: {
@@ -45,12 +45,30 @@ export function createDeck(deck_name, deck_wins, deck_losses, user_id) {
                     losses: deck_losses
                 }
               });
-            dispatch({
-                type: GET_DECKS,
-                payload: response.data.result
-            })
+              dispatch(getDecks(user_id))
         } catch (err) {
             console.log(err);
         }
     }
 };
+
+export function deleteDeck(id, user_id) {
+    return async (dispatch) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios(`${url}/users/${user_id}/decks/${id}`,
+            {
+                method: "delete",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                }
+              });
+              dispatch(getDecks(user_id))
+        }catch (err) {
+            console.log(err)
+        }
+    }
+}
+
