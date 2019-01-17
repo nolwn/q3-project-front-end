@@ -29,6 +29,29 @@ export const verifyUser = (fn) => {
   }
 };
 
+export const createUser = (user_name, password, fn) => {
+  return async (dispatch) => {
+    try {
+      await axios(`${url}/users`, {
+        method: "post",
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        data: {
+          userName: user_name,
+          password: password
+        }
+      });
+      login(user_name, password);
+      dispatch(verifyUser(fn))
+    }catch(err) {
+      console.log(err);
+      dispatch(setAuthentication(null))
+    }
+  }
+}
+
 export const login = (user_name, password, fn) => {
   return async (dispatch) => {
     try {

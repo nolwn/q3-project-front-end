@@ -16,7 +16,6 @@ export function getDecks(user_id) {
                   'Authorization': `Bearer ${token}`
                 }
               });
-              console.log(response)
             dispatch({
                 type: GET_DECKS,
                 payload: response.data.result
