@@ -56,7 +56,7 @@ class ListofDecks extends Component {
                             <label className="btn btn-success text-white">
                                 <button onClick={this.toggleCreateDeckField} className="btn text-white">Create Deck</button>
                             </label>
-                            <label class="btn btn-secondary text-white">
+                            <label className="btn btn-secondary text-white">
                                 <button onClick={this.userLogOut} className="btn text-white "> Logout</button>
                             </label>
                         </div>
