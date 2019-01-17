@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -29,4 +29,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h2 {
+    text-align: center !important;
+    width: 100%
+}
+
+.colorless-cost {
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 10px;
+    background: lightgray;
+    margin: 2px;
+    font-family: monospace;
+    padding: 3px 3px;
+    text-align: center;
+}
+
+.color-cost {
+    margin: 2px;
+}
+
+.card-cost {
+    margin-left: 10px;
+    float: right;
 }

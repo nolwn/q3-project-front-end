@@ -51,18 +51,20 @@ console.log(convertedManaCosts(cards))
 console.log(groupCosts(convertedManaCosts(cards)))
 
 const CurveGraph = (props) =>
-    <BarChart
-        width={450}
-        height={250}
-        data={groupCosts(convertedManaCosts(cards))}
-    >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="cards" fill="#8884d8" />
-    </BarChart>
+    <div className='BarChart'>
+        <BarChart
+            width={400}
+            height={300}
+            data={groupCosts(convertedManaCosts(cards))}
+            >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="cards" fill="#8884d8" />
+        </BarChart>
+    </div>
 
 
 const mapStateToProps = (state) => {
