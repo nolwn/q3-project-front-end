@@ -3,7 +3,6 @@ const url = process.env.REACT_APP_API_URL;
 
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION';
 
-
 export const setAuthentication = claim => ({
   type: SET_AUTHENTICATION,
   payload: claim
@@ -24,7 +23,7 @@ export const verifyUser = () => {
       dispatch(setAuthentication(user.data))
     }catch(err) {
       console.log(err)
-      // dispatch(setAuthentication(null))
+      dispatch(setAuthentication(null))
     }
   }
 };
@@ -38,7 +37,7 @@ export const login = (user_name, password, fn) => {
       fn()
     }catch(err) {
       console.log(err)
-      // dispatch(setAuthentication(null))
+      dispatch(setAuthentication(null))
     }
   }
 }

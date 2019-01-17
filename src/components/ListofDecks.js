@@ -4,6 +4,7 @@ import CreateDeckForm from './CreateDeckForm';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getDecks} from '../actions/decks';
+import {setAuthentication} from '../actions/authentication'
 
 class ListofDecks extends Component {
     constructor(props) {
@@ -12,6 +13,12 @@ class ListofDecks extends Component {
             createDeck: false
         }
     };
+
+    userLogOut = () => {
+        localStorage.removeItem('token');
+        this.props.setAuthentication(null);
+        this.props.history.push(`/login`)
+    }
 
     noDecks= () => {
         return ( 
@@ -46,7 +53,7 @@ class ListofDecks extends Component {
                                 <button onClick={this.toggleCreateDeckField} className="btn text-white">Create Deck</button>
                             </label>
                             <label class="btn btn-secondary text-white">
-                                <button className="btn text-white "> Logout</button>
+                                <button onClick={this.userLogOut} className="btn text-white "> Logout</button>
                             </label>
                         </div>
                     </div>
@@ -65,7 +72,7 @@ class ListofDecks extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({getDecks},dispatch)
+    return bindActionCreators({getDecks, setAuthentication},dispatch)
 }
 
 const mapStateToProps = (state) => {
