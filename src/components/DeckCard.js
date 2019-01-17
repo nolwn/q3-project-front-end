@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Modal from 'react-modal'
+
 import cards from '../utilities/utilities'
 
 export default class DeckCards extends Component {
@@ -64,10 +66,30 @@ export default class DeckCards extends Component {
 
     }
 
-    render = () =>
-    <div>
-        { this.props.card.qty } x
-        { this.props.card.name }
-        <span className='card-cost'>{ this.getCost() }</span>
-    </div>
+
+
+    render = () => {
+        const customStyles = {
+            content : {
+                top                   : '50%',
+                left                  : '50%',
+                right                 : 'auto',
+                bottom                : 'auto',
+                marginRight           : '-25%',
+                transform             : 'translate(-50%, -50%)',
+                backgroundColor       :  "gray",
+                border                : "2px black solid"
+            }
+        }
+
+        return (
+            <div>
+                <button>-</button>
+                <button>+</button>
+                { this.props.card.qty } x
+                { this.props.card.name }
+                <span className='card-cost'>{ this.getCost() }</span>
+            </div>
+        )
+    }
 }
