@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
-import SearchForm from './components/SearchForm.js';
-import CardList from './components/CardList.js';
 import ListofDecks from './components/ListofDecks.js';
-import LoginForm from './components/LoginForm'
-import { connect } from 'react-redux';
+import LoginForm from './components/LoginForm';
+import AuthenticatedRoute from './higherOrderComponents/authenticatedRoute';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {verifyUser} from './actions/authentication';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-
+    this.props.verifyUser()
   }
 
   render() {
@@ -27,7 +28,7 @@ class App extends Component {
               <CardList foundCards = {this.props.cards} /> */}
               <Switch>
                 <Route path='/login' component={LoginForm}/>
-                <Route path='/user_id/:user_id/decks' component={ListofDecks}/>
+                <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
               </Switch>
               </div>
           </div> 
@@ -36,7 +37,12 @@ class App extends Component {
     )}
 };
 
-const mapStateToProps = ({ cards }) => ({ cards })
+const mapStateToProps = ({ cards }) => ({ cards });
 
-export default connect(mapStateToProps, null)(App)
+const mapDispatchToProps = dispatch => 
+bindActionCreators({
+  verifyUser,
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 

@@ -21,30 +21,24 @@ export const verifyUser = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      dispatch( setAuthentication(user.data))
+      dispatch(setAuthentication(user.data))
     }catch(err) {
       console.log(err)
+      // dispatch(setAuthentication(null))
     }
   }
 };
 
-export const login = (user_name, password) => {
+export const login = (user_name, password, fn) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(`${url}/auth/login`, {userName: user_name, password: password});
       localStorage.setItem('token', response.data.token);
-      const user = await axios(`${url}/auth/verify`,{
-        method: "get",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${response.data.token}`
-        }
-      });
-      dispatch( setAuthentication(user.data))
+      dispatch(verifyUser())
+      fn()
     }catch(err) {
       console.log(err)
+      // dispatch(setAuthentication(null))
     }
   }
-
 }

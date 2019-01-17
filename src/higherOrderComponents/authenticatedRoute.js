@@ -5,28 +5,27 @@ import { connect } from 'react-redux'
 
 const AuthenticatedRoute = props => {
     const {
-    authentication: {
-      pending,
-      user
+    auth: {
+      pending = false,
+      userId
     },
     path,
     component
   } = props
 
-  if(pending && !user){
+  if(pending && !userId){
     return <div>Loading...</div>
   }
-  else if(user) {
+  else if(userId) {
     return <Route path={path} component={component} /> 
   }
   else {
-    return <Redirect to='/' />
+    return <Redirect to='/login' />
   }
 }
 
-
 const mapStateToProps = state => ({ 
-  authentication: state.authentication
+  auth: state.auth
 })
 
 export default connect(mapStateToProps)(AuthenticatedRoute)
