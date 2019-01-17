@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {setAuthentication} from '../actions/authentication';
 
-
 import SearchForm from './SearchForm'
 import CardList from './CardList'
 import CurveGraph from './CurveGraph'
@@ -16,11 +15,10 @@ const server = process.env.REACT_APP_API_URL
 
 class CardView extends Component {
     componentDidMount = () => {
-        axios.get(server + '/users/1/decks/1/cards')
+        axios.get(`${server}/users/${this.props.match.params.user_id}/decks/${this.props.match.params.deck_id}/cards`)
             .then(response => {
-                this.props.getDeckCards(1, 1)
+                this.props.getDeckCards(this.props.match.params.user_id, this.props.match.params.deck_id)
             })
-
         console.log('props:', this.props)
     };
 

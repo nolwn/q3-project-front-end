@@ -14,3 +14,7 @@ export const SEARCH_CARDS = "SEARCH_CARDS";
         }
     }
 };
+
+export function addCardtoDeck(card, userId, deckId) {
+    
+}

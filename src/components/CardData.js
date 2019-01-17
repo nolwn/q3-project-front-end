@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import './CardData.css';
 import Modal from 'react-modal';
 
+
 class CardData extends Component {
     constructor(props) {
         super(props)
