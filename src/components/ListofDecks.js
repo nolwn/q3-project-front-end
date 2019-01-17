@@ -17,7 +17,7 @@ class ListofDecks extends Component {
     userLogOut = () => {
         localStorage.removeItem('token');
         this.props.setAuthentication(null);
-        this.props.history.push(`/login`)
+        this.props.history.push(`/`)
     }
 
     noDecks= () => {
@@ -29,7 +29,7 @@ class ListofDecks extends Component {
     }
 
     componentDidMount() {
-        this.props.getDecks(this.props.match.params.user_id, () => this.props.history.push('/login'));
+        this.props.getDecks(this.props.match.params.user_id, () => this.props.history.push('/'));
     }
 
     toggleCreateDeckField = () => {

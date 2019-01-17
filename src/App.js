@@ -27,8 +27,8 @@ class App extends Component {
               <SearchForm />
               <CardList foundCards = {this.props.cards} /> */}
               <Switch>
-                <Route path='/login' component={LoginForm}/>
-                <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
+                <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} /> 
+                <Route path='/' component={LoginForm}/>
               </Switch>
               </div>
           </div> 

@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 
 const AuthenticatedRoute = props => {
     const {
-    auth: {
-      pending = false,
-      userId
-    },
-    path,
-    component
-  } = props
-
+      auth: {
+        pending = false,
+        userId
+      },
+      path,
+      component
+    } = props
+    console.log(props)
   if(pending && !userId){
     return <div>Loading...</div>
   }
@@ -20,7 +20,7 @@ const AuthenticatedRoute = props => {
     return <Route path={path} component={component} /> 
   }
   else {
-    return <Redirect to='/login' />
+    return <Redirect to='/' />
   }
 }
 

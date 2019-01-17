@@ -8,7 +8,7 @@ export const setAuthentication = claim => ({
   payload: claim
 });
 
-export const verifyUser = () => {
+export const verifyUser = (fn) => {
   return async (dispatch) => {
     try {
       const token = localStorage.getItem('token');
@@ -21,6 +21,7 @@ export const verifyUser = () => {
         }
       });
       dispatch(setAuthentication(user.data))
+      if(fn) fn()
     }catch(err) {
       console.log(err)
       dispatch(setAuthentication(null))
@@ -33,8 +34,7 @@ export const login = (user_name, password, fn) => {
     try {
       const response = await axios.post(`${url}/auth/login`, {userName: user_name, password: password});
       localStorage.setItem('token', response.data.token);
-      dispatch(verifyUser())
-      fn()
+      dispatch(verifyUser(fn));
     }catch(err) {
       console.log(err)
       dispatch(setAuthentication(null))
