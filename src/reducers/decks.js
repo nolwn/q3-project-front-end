@@ -8,6 +8,7 @@ export default function decks (state = initialState, action) {
     switch(action.type) {
         case GET_DECKS: 
             return action.payload
+
         default:
             return state
     }

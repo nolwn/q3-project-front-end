@@ -8,7 +8,8 @@ const initialState = {
 export default function auth (state = initialState, action) {
   switch(action.type) {
       case SET_AUTHENTICATION:
-          return {...state, userId: action.payload.id, pending: false}
+        const id = action.payload !== null ? action.payload.id : null
+          return {...state, userId: id, pending: false}
       default:
           return state
   }

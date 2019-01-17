@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import { createDeck} from '../actions/decks'
 
 class CreateDeckForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            deckName: '',
-            userId: '',
-            wins: 0,
-            losses: 0
-        }
+        this.state = { }
     }
 
     handleCreateDeck = (event) => {
@@ -21,7 +17,6 @@ class CreateDeckForm extends Component {
              event.target.deckLosses.value,
              this.props.match.params.user_id
              )
-
     }; 
 
 
@@ -37,11 +32,11 @@ class CreateDeckForm extends Component {
                             </div>
                             <div className="form-group col-md-2">
                                 <label for="deckName">Current Wins</label>
-                                <input type="number" className="form-control form-control-sm" name="deckWins" id="deckWins" placeholder="Name Your Deck"/>
+                                <input type="number" className="form-control form-control-sm" name="deckWins" id="deckWins" placeholder="Enter Wins"/>
                             </div>
                             <div className="form-group col-md-2">
                                 <label for="deckName">Current Losses</label>
-                                <input type="number" className="form-control form-control-sm" name="deckLosses" id="deckLosses" placeholder="Name Your Deck"/>
+                                <input type="number" className="form-control form-control-sm" name="deckLosses" id="deckLosses" placeholder="Enter Losses"/>
                             </div>
                             <div className="form-group col-md-2 align-self-end">
                                 <button type="submit" className="btn btn-primary">Create Deck</button>
@@ -60,7 +55,7 @@ const mapStateToProps = state => ({
   
   const mapDispatchToProps = dispatch => 
     bindActionCreators({
-    // createDeck
+    createDeck
     }, dispatch)
   
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateDeckForm))
