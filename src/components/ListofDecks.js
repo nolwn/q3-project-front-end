@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DeckListing from './DeckListing.js';
+import DeckListing from './DeckListing';
+import CreateDeckForm from './CreateDeckForm';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getDecks} from '../actions/decks';
@@ -7,7 +8,17 @@ import {getDecks} from '../actions/decks';
 class ListofDecks extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+
+        }
+    };
+
+    noDecks= () => {
+        return ( 
+            <div className="row border">
+                <div className="col-md"><h2>You Currently Have No Decks</h2></div>
+            </div>
+            );
     }
 
     componentDidMount() {
@@ -19,8 +30,12 @@ class ListofDecks extends Component {
         const user = this.props.decks[0] || "test";
         return(
             <div className="container">
-            <h2>{user.user_name}'s Decks</h2> <span>Click Deck Name to Edit</span>
-                {decks.map(deck => {return <DeckListing key= {deck.id} {...deck}/>})}
+            <h2>{user.user_name}'s Decks</h2>
+            <CreateDeckForm/>
+                {
+                    decks.length === 0 ? this.noDecks() : decks.map(deck => {return <DeckListing key= {deck.id} {...deck}/>})
+                    
+                    }
             </div>
         )
     }

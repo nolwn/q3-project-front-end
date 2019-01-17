@@ -18,7 +18,6 @@ class LoginForm extends Component {
     }
 
     render() {
-        console.log(this.props.match.params)
         return (
             <div className="row justify-content-center">
                 <div className="col-6">

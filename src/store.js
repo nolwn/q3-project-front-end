@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import decks from './reducers/decks';
 import cards from './reducers/cards';
 import auth from './reducers/authentication';
-import logger from 'redux-logger'
 
 
 //combineReducers
