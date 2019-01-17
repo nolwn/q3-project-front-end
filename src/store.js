@@ -4,9 +4,6 @@ import thunk from 'redux-thunk';
 import decks from './reducers/decks';
 import cards from './reducers/cards';
 import auth from './reducers/authentication';
-
-import decks from './reducers/decks'
-import cards from './reducers/cards'
 import deckCards from './reducers/deckCards'
 
 
