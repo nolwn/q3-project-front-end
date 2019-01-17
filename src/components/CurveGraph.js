@@ -1,12 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { BarChart, XAxis, YAxis, Legend, Bar, CartesianGrid, Tooltip } from 'recharts'
-import { cards } from '../utilities/utilities'
+// import { cards } from '../utilities/utilities'
 
-console.log(cards)
-
-const convertedManaCosts = (cards) => {
-    return cards.map(card => {
+const convertedManaCosts = (deckCards) => {
+    return deckCards.map(card => {
         let convertedManaCost = 0
         for (let property in card) {
             if (property === 'red' ||
@@ -19,7 +17,7 @@ const convertedManaCosts = (cards) => {
             }
         }
 
-        return convertedManaCost
+        return {cost: convertedManaCost, qty: card.qty}
     })
 }
 
@@ -32,9 +30,9 @@ const groupCosts = (costs) => {
     }
 
     costs.reduce((acc, cost) => {
-        if (graphObj[cost]) {
-            graphObj[cost].cards++
-        } else if (cost > 7) {
+        if (graphObj[cost.cost]) {
+            graphObj[cost.cost].cards += cost.qty
+        } else if (cost.cost > 7) {
             graphObj[7].cards++
         }
 
@@ -47,15 +45,12 @@ const groupCosts = (costs) => {
     return graphData
 }
 
-console.log(convertedManaCosts(cards))
-console.log(groupCosts(convertedManaCosts(cards)))
-
 const CurveGraph = (props) =>
     <div className='BarChart'>
         <BarChart
             width={400}
             height={300}
-            data={groupCosts(convertedManaCosts(cards))}
+            data={groupCosts(convertedManaCosts(props.deckCards))}
             >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />

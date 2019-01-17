@@ -10,15 +10,15 @@ import CardList from './CardList'
 import CurveGraph from './CurveGraph'
 import DeckCards from './DeckCards'
 
-import { decrement } from '../actions/deckCards'
+import { decrement, getDeckCards } from '../actions/deckCards'
 
 const server = process.env.REACT_APP_API_URL
 
 class CardView extends Component {
     componentDidMount = () => {
         axios.get(server + '/users/1/decks/1/cards')
-            .then(data => {
-                console.log(data)
+            .then(response => {
+                this.props.getDeckCards(1, 1)
             })
 
         console.log('props:', this.props)
@@ -77,7 +77,7 @@ class CardView extends Component {
 
 const mapStateToProps = (state) => (state)
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ decrement, setAuthentication }, dispatch)
+  return bindActionCreators({ decrement, getDeckCards, setAuthentication }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardView)

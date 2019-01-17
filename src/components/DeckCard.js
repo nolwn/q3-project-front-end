@@ -12,7 +12,6 @@ class DeckCard extends Component {
         this.state = {
             isOpen: false
         }
-        console.log(this.translateCost())
     }
 
     translateCost = () => {
@@ -26,8 +25,8 @@ class DeckCard extends Component {
         ]
 
         return types.reduce((acc, type) => {
-            if (this.props.card[type] !== 0) {
-                acc[type] = this.props.card[type]
+            if (this.props[type] !== 0) {
+                acc[type] = this.props[type]
             }
             return acc
         }, {})
@@ -36,7 +35,6 @@ class DeckCard extends Component {
 
     getCost = () => {
         const cost = this.translateCost()
-        console.log(cost)
         const images = []
         const imageURLs = {
             red: 'https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/87/R.svg?version=3b5a5cc001a7ae6282b24606e9e99715',
@@ -84,15 +82,15 @@ class DeckCard extends Component {
                 border                : "2px black solid"
             }
         }
-
+        console.log("card render: ", this.props.qty)
         return (
             <div>
                 <QtyButtons
-                    qty={ this.props.card.qty }
-                    data-cardId = { this.props.card.id }
+                    qty={ this.props.qty }
+                    data-cardId = { this.props.id }
                     />
-                { this.props.card.qty } x
-                { this.props.card.name }
+                { this.props.qty } x
+                { this.props.name }
                 <span className='card-cost'>{ this.getCost() }</span>
             </div>
         )
