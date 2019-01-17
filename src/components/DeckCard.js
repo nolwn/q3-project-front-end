@@ -70,18 +70,6 @@ class DeckCard extends Component {
 
 
     render = () => {
-        const customStyles = {
-            content : {
-                top                   : '50%',
-                left                  : '50%',
-                right                 : 'auto',
-                bottom                : 'auto',
-                marginRight           : '-25%',
-                transform             : 'translate(-50%, -50%)',
-                backgroundColor       :  "gray",
-                border                : "2px black solid"
-            }
-        }
         console.log("card render: ", this.props.qty)
         return (
             <div>
