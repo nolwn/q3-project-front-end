@@ -20,7 +20,9 @@ class LoginForm extends Component {
     handleCreateUser = (event) => {
         event.preventDefault();
         this.props.createUser(event.target.createUser.value, event.target.createPassword.value,
-            () => this.props.history.push(`/user_id/${this.props.userId}/decks`));
+            // () => console.log("TEST STRING WHATS HAPPENING"),
+            () => this.props.history.push(`/user_id/${this.props.userId}/decks`)
+            );
     }
 
     render() {
@@ -31,13 +33,13 @@ class LoginForm extends Component {
                     <h2>Login</h2>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="loginName">User Name</label>
+                            <label htmlFor="loginName">User Name</label>
                             <input type="text" className="form-control form-control-sm" name="loginName" id="loginName" placeholder="Your User Name"/>
                         </div>
                     </div>
                         <div className="form-row">
                             <div className="form-group col-6">
-                                <label for="loginPassword">Password</label>
+                                <label htmlFor="loginPassword">Password</label>
                                 <input type="password" className="form-control form-control-sm" name="loginPassword" id="loginPassword" placeholder="Password"/>
                             </div>
                         </div>
@@ -49,13 +51,13 @@ class LoginForm extends Component {
                         <h2>New Account</h2>
                         <div className="form-row">
                             <div className="form-group col-6">
-                                <label for="createUser">User Name</label>
+                                <label htmlFor="createUser">User Name</label>
                                 <input type="text" className="form-control form-control-sm" name="createUser" id="createUser" placeholder="Enter User Name"/>
                             </div>
                         </div>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                    <label for="createPassword">Password</label>
+                                    <label htmlFor="createPassword">Password</label>
                                     <input type="password" className="form-control form-control-sm" name="createPassword" id="createPassword" placeholder="Enter Password"/>
                                 </div>
                             </div>

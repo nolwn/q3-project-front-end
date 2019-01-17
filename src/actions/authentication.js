@@ -21,6 +21,7 @@ export const verifyUser = (fn) => {
         }
       });
       dispatch(setAuthentication(user.data))
+      console.log(fn)
       if(fn) fn()
     }catch(err) {
       console.log(err)
@@ -43,8 +44,7 @@ export const createUser = (user_name, password, fn) => {
           password: password
         }
       });
-      login(user_name, password);
-      dispatch(verifyUser(fn))
+      dispatch(login(user_name, password, fn))
     }catch(err) {
       console.log(err);
       dispatch(setAuthentication(null))
