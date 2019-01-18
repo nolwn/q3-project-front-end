@@ -70,7 +70,6 @@ class DeckCard extends Component {
 
 
     render = () => {
-        console.log("card render: ", this.props.qty)
         return (
             <div>
                 <QtyButtons

@@ -16,9 +16,6 @@ const deckCards = (state = [], action) => {
             const newState = state.slice(0)
             const index = newState.findIndex(card => card.id === id)
 
-            console.log("index", id)
-
-
             newState[index].qty = qty
 
             return newState
@@ -26,14 +23,12 @@ const deckCards = (state = [], action) => {
 
         case INCREMENT:
         {
-            console.log('id', action)
             const id = action.payload.id
             const qty = action.payload.qty
 
             const newState = state.slice(0)
             const index = newState.findIndex(card => card.id === id)
 
-            console.log("index", newState[index])
 
 
             newState[index].qty = qty
@@ -53,7 +48,6 @@ const deckCards = (state = [], action) => {
             return [ ...state ].filter(card => card.id !== action.payload)
 
         default:
-            console.log("state", state)
             return state
     }
 }

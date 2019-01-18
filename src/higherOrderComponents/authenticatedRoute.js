@@ -12,19 +12,18 @@ const AuthenticatedRoute = props => {
       path,
       component
     } = props
-    console.log(props)
   if(pending && !userId){
     return <div>Loading...</div>
   }
   else if(userId) {
-    return <Route path={path} component={component} /> 
+    return <Route path={path} component={component} />
   }
   else {
     return <Redirect to='/' />
   }
 }
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   auth: state.auth
 })
 

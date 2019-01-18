@@ -6,8 +6,6 @@ import { connect } from 'react-redux'
 import { decrement, increment, remove } from '../actions/deckCards'
 
 const QtyButtons = (props) => {
-    console.log("poops", props.qty)
-
     return(
         <span className='qtyButtons'>
             <button onClick = { () => {

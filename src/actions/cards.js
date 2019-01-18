@@ -10,11 +10,11 @@ export const SEARCH_CARDS = "SEARCH_CARDS";
                 payload: response
             })
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 };
 
 export function addCardtoDeck(card, userId, deckId) {
-    
+
 }

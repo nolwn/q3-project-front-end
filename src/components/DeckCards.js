@@ -7,12 +7,13 @@ import { decrement } from '../actions/deckCards'
 import DeckCard from './DeckCard'
 
 const DeckCards = (props) => {
-    console.log('RENDER', props.deckCards[0] && props.deckCards[0].qty);
-    return     <div>
+    return     (
+        <div>
             {
                 props.deckCards.map(card => <DeckCard { ...card } />)
             }
         </div>
+    )
 }
 
 const mapStateToProps = ({ deckCards }) => ({ deckCards })

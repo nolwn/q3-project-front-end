@@ -21,7 +21,7 @@ export function getDecks(user_id) {
                 payload: response.data.result
             })
         } catch (err) {
-            console.log(err);
+            console.err(err);
         }
     }
 };
@@ -46,7 +46,7 @@ export function createDeck(deck_name, deck_wins, deck_losses, user_id) {
               });
               dispatch(getDecks(user_id))
         } catch (err) {
-            console.log(err);
+            console.err(err);
         }
     }
 };
@@ -66,8 +66,7 @@ export function deleteDeck(id, user_id) {
               });
               dispatch(getDecks(user_id))
         }catch (err) {
-            console.log(err)
+            console.err(err)
         }
     }
 }
-

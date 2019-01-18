@@ -19,7 +19,6 @@ class CardView extends Component {
             .then(response => {
                 this.props.getDeckCards(this.props.match.params.user_id, this.props.match.params.deck_id)
             })
-        console.log('props:', this.props)
     };
 
     userLogOut = () => {

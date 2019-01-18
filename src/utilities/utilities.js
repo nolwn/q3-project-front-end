@@ -1,4 +1,5 @@
 export const convertCost = (cost) => {
+    if (!cost) return {}
     const costArray = cost.slice(1, cost.length - 1).split('}{')
     const costMap = {
         R: 'red',

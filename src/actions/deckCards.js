@@ -23,7 +23,7 @@ export const getDeckCards = (userId, deckId) => {
             dispatch({ type: DECKCARDS, payload: response.data })
         }
     } catch (err) {
-        console.log(err)
+        console.error(err)
     }
 }
 
@@ -40,7 +40,7 @@ export const decrement = (userId, deckId, cardId) => {
             dispatch({ type: DECREMENT, payload: response.data })
 
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 };
@@ -105,7 +105,6 @@ export const remove = (userId, deckId, cardId) => {
                 '/remove'
             )
 
-        console.log(deletedCard)
         dispatch({ type: REMOVECARD, payload: deletedCard.data.card_id })
     } catch (err) {
         console.log(err)

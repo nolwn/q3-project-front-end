@@ -21,10 +21,9 @@ export const verifyUser = (fn) => {
         }
       });
       dispatch(setAuthentication(user.data))
-      console.log(fn)
       if(fn) fn()
     }catch(err) {
-      console.log(err)
+      console.error(err)
       dispatch(setAuthentication(null))
     }
   }
@@ -46,7 +45,7 @@ export const createUser = (user_name, password, fn) => {
       });
       dispatch(login(user_name, password, fn))
     }catch(err) {
-      console.log(err);
+      console.error(err);
       dispatch(setAuthentication(null))
     }
   }
@@ -59,7 +58,7 @@ export const login = (user_name, password, fn) => {
       localStorage.setItem('token', response.data.token);
       dispatch(verifyUser(fn));
     }catch(err) {
-      console.log(err)
+      console.error(err)
       dispatch(setAuthentication(null))
     }
   }

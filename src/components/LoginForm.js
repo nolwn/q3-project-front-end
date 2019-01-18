@@ -20,7 +20,6 @@ class LoginForm extends Component {
     handleCreateUser = (event) => {
         event.preventDefault();
         this.props.createUser(event.target.createUser.value, event.target.createPassword.value,
-            // () => console.log("TEST STRING WHATS HAPPENING"),
             () => this.props.history.push(`/user_id/${this.props.userId}/decks`)
             );
     }
@@ -72,12 +71,12 @@ class LoginForm extends Component {
 const mapStateToProps = state => ({
     userId: state.auth.userId
   })
-  
-  const mapDispatchToProps = dispatch => 
+
+  const mapDispatchToProps = dispatch =>
     bindActionCreators({
       setAuthentication,
       login,
       createUser
     }, dispatch)
-  
+
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))
