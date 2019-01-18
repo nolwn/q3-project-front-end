@@ -75,7 +75,7 @@ class DeckCard extends Component {
             <div>
                 <QtyButtons
                     qty={ this.props.qty }
-                    data-cardId = { this.props.id }
+                    id = { this.props.id }
                     />
                 { this.props.qty } x
                 { this.props.name }

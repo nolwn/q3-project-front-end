@@ -1,6 +1,4 @@
-import { DECREMENT } from '../actions/deckCards'
-import { DECKCARDS } from '../actions/deckCards'
-
+import { DECREMENT, INCREMENT, DECKCARDS } from '../actions/deckCards';
 const initialState = [
     // {
     //     "api_id": "bcec34f6-3ad0-5e68-90e2-f74cddebe336",
@@ -271,6 +269,21 @@ const deckCards = (state = initialState, action) => {
             newState[index].qty = qty
 
             return newState
+
+        case INCREMENT:{           
+            console.log('id', action)
+            const id = action.payload.id
+            const qty = action.payload.qty
+
+            const newState = state.slice(0)
+            const index = newState.findIndex(card => card.id === id)
+
+            console.log("index", newState[index])
+
+
+            newState[index].qty = qty
+
+            return newState }
 
         case DECKCARDS:
             return action.payload
