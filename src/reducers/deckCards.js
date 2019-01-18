@@ -10,7 +10,7 @@ const deckCards = (state = [], action) => {
     switch (action.type) {
         case DECREMENT:
         {
-            const id = action.payload.id
+            const id = action.payload.card_id
             const qty = action.payload.qty
 
             const newState = state.slice(0)
@@ -23,13 +23,13 @@ const deckCards = (state = [], action) => {
 
         case INCREMENT:
         {
-            const id = action.payload.id
+            const id = action.payload.card_id
             const qty = action.payload.qty
 
             const newState = state.slice(0)
             const index = newState.findIndex(card => card.id === id)
 
-
+            console.log("newState", newState, "index", index, "id", id)
 
             newState[index].qty = qty
 
