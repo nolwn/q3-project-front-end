@@ -50,7 +50,7 @@ class CardView extends Component {
                     </div>
                 </div>
             <div className="row" >
-                <div className='col-9 border'>
+                <div className='col-9'>
                     <div className='row'>
                         <div className='col-5'>
                             <DeckCards />
@@ -60,7 +60,7 @@ class CardView extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-3 border">
+                <div className="col-3">
                     <h2
                         className="navbar-brand">
                         Search Magic Cards
