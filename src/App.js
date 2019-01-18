@@ -10,10 +10,6 @@ import {bindActionCreators} from 'redux';
 import {verifyUser} from './actions/authentication';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.props.verifyUser()
   }

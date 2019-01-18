@@ -2,7 +2,6 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-// import { cards } from '../utilities/utilities'
 import { decrement } from '../actions/deckCards'
 import DeckCard from './DeckCard'
 
@@ -10,7 +9,7 @@ const DeckCards = (props) => {
     return     (
         <div>
             {
-                props.deckCards.map(card => <DeckCard { ...card } />)
+                props.deckCards.map(card => <DeckCard key= { card.id } { ...card } />)
             }
         </div>
     )

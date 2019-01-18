@@ -43,14 +43,14 @@ class CardView extends Component {
                         <label className="btn btn-warning">
                             <button onClick={this.returnToDecks} className="btn">Back to Decks</button>
                             </label>
-                        <label class="btn btn-secondary text-white">
+                        <label className="btn btn-secondary text-white">
                             <button onClick={this.userLogOut} className="btn text-white "> Logout</button>
                             </label>
                         </div>
                     </div>
                 </div>
             <div className="row" >
-                <div className='col-8 border'>
+                <div className='col-9 border'>
                     <div className='row'>
                         <div className='col-5'>
                             <DeckCards />
@@ -60,7 +60,7 @@ class CardView extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4 border">
+                <div className="col-3 border">
                     <h2
                         className="navbar-brand">
                         Search Magic Cards

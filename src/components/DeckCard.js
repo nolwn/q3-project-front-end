@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Modal from 'react-modal'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -45,14 +44,14 @@ class DeckCard extends Component {
         }
 
         if (cost.colorless) {
-            images.push( <span className='colorless-cost'> {  cost.colorless } </span> )
+            images.push( <span key={ 'colorless' } className='colorless-cost'> {  cost.colorless } </span> )
         }
 
         for (let type in cost) {
             for (let i = 0; i < cost[type]; i++) {
                 if (type !== 'colorless')
                 images.push(
-                    <img
+                    <img key={ i + type }
                     src={ imageURLs[type] }
                     height='15'
                     width='15'
@@ -76,8 +75,8 @@ class DeckCard extends Component {
                     qty={ this.props.qty }
                     id = { this.props.id }
                     />
-                { this.props.qty } x
-                { this.props.name }
+                { this.props.qty }x
+                { ' ' + this.props.name }
                 <span className='card-cost'>{ this.getCost() }</span>
             </div>
         )

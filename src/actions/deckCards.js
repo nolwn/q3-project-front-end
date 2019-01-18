@@ -11,8 +11,8 @@ export const REMOVECARD = 'REMOVECARD'
 const server = process.env.REACT_APP_API_URL
 
 export const getDeckCards = (userId, deckId) => {
-    try {
-        return async (dispatch) => {
+    return async (dispatch) => {
+        try {
             const response = await axios.get(
                 server +
                 '/users/' + userId +
@@ -21,9 +21,10 @@ export const getDeckCards = (userId, deckId) => {
             )
 
             dispatch({ type: DECKCARDS, payload: response.data })
+
+        } catch (err) {
+            console.error(err)
         }
-    } catch (err) {
-        console.error(err)
     }
 }
 
@@ -71,7 +72,7 @@ export const addCard = (userId, deckId, cardData) => {
         body.name = cardData.name
         body.api_id = cardData.id
         try {
-            const postResponse = await axios.post(
+            await axios.post(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +

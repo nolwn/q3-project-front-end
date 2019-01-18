@@ -36,6 +36,8 @@ const groupCosts = (costs) => {
             graphObj[7].cards++
         }
 
+        return graphObj
+
     }, graphObj)
 
     for ( const bar in graphObj ) {

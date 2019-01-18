@@ -14,14 +14,6 @@ class CardData extends Component {
     }
 
     generateManaTags(element, id) {
-        const type ={
-            dark: './images/dark.png',
-            light: './images/light.png',
-            fire: './images/fire.png',
-            life: './images/life.png',
-            water: './images/water.png'
-        };
-
         switch (element) {
             case "R":
                 return (<img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/87/R.svg?version=3b5a5cc001a7ae6282b24606e9e99715' alt="fire" height="20" width="20" />)
@@ -71,31 +63,33 @@ class CardData extends Component {
 
         return (
             <div className="row border align-items-center justify-content-around">
-                <div className="col-4"><b><a onClick={(event) =>
+                {/* eslint-disable-next-line */}
+                <span className="col-4"><b><a onClick={(event) =>
                     {event.preventDefault()
                     this.setModal(true) }
-                    } href="#">{this.props.cardData.name}</a></b></div>
-                    <Modal isOpen={this.state.isOpen} onRequestClose={() => this.setModal(false)} style={customStyles} contentLabel="Example Modal">
-                        <div className="Container">
-                            <div className = "row border-bottom justify-content-end">
-                                <div className="col-2">
-                                    <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={e => this.setModal(false)}>X</button>
-                                </div>
-                            </div>
-                            <div className = "row border-bottom">
-                                <div className="col">
-                                    <img style={{marginTop: 5, marginBottom: 5}} src={this.props.cardData.imageUrl} alt={this.props.cardData.name} height="400" width="250" />
-                                </div>
-                            </div>
-                            <div className = "row justify-content-center">
-                                <div className="col-8 align-self-center">
-                                    <button style={{marginTop: 5}} type="button" className="btn btn-success">Add Card to Deck</button>
-                                </div>
+                    } href="#">{this.props.cardData.name}</a></b>
+                </span>
+                <Modal isOpen={this.state.isOpen} onRequestClose={() => this.setModal(false)} style={customStyles} contentLabel="Example Modal">
+                    <div className="Container">
+                        <div className = "row border-bottom justify-content-end">
+                            <div className="col-2">
+                                <button style={{marginBottom: 5}} className="btn btn-sm btn-light" onClick={e => this.setModal(false)}>X</button>
                             </div>
                         </div>
-                    </Modal>
-                <div className="col-6"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, 1, this.props.cardData) }>+</button> </div>
+                        <div className = "row border-bottom">
+                            <div className="col">
+                                <img style={{marginTop: 5, marginBottom: 5}} src={this.props.cardData.imageUrl} alt={this.props.cardData.name} height="400" width="250" />
+                            </div>
+                        </div>
+                        <div className = "row justify-content-center">
+                            <div className="col-8 align-self-center">
+                                <button style={{marginTop: 5}} type="button" className="btn btn-success">Add Card to Deck</button>
+                            </div>
+                        </div>
+                    </div>
+                </Modal>
+                <span>{this.generateManaCost(manaCost)}</span>
+                <button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, 1, this.props.cardData) }>+</button>
             </div>
         )
     }
