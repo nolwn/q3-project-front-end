@@ -3,10 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Modal from 'react-modal';
 
-<<<<<<< HEAD
-=======
 import { addCard } from '../actions/deckCards'
->>>>>>> converts mana cost from api
 
 class CardData extends Component {
     constructor(props) {
@@ -98,7 +95,7 @@ class CardData extends Component {
                         </div>
                     </Modal>
                 <div className="col-6"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => addCard(this.props.cardData) }>+</button> </div>
+                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, 1, this.props.cardData) }>+</button> </div>
             </div>
         )
     }
@@ -107,4 +104,8 @@ class CardData extends Component {
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators({ addCard }, dispatch)
 
-export default connect(null, mapDispatchToProps)(CardData);
+const mapStateToProps = ({ auth }) => {
+    return { auth }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardData);
