@@ -32,11 +32,11 @@ class CreateDeckForm extends Component {
                             </div>
                             <div className="form-group col-md-2">
                                 <label for="deckName">Current Wins</label>
-                                <input type="number" className="form-control form-control-sm" name="deckWins" id="deckWins" placeholder="Enter Wins"/>
+                                <input type="number" className="form-control form-control-sm" name="deckWins" id="deckWins" defaultValue="0" placeholder="Enter Wins"/>
                             </div>
                             <div className="form-group col-md-2">
                                 <label for="deckName">Current Losses</label>
-                                <input type="number" className="form-control form-control-sm" name="deckLosses" id="deckLosses" placeholder="Enter Losses"/>
+                                <input type="number" className="form-control form-control-sm" name="deckLosses" id="deckLosses" defaultValue="0" placeholder="Enter Losses"/>
                             </div>
                             <div className="form-group col-md-2 align-self-end">
                                 <button type="submit" className="btn btn-primary">Create Deck</button>

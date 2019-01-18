@@ -40,8 +40,8 @@ export function createDeck(deck_name, deck_wins, deck_losses, user_id) {
                 },
                 data: {
                     deckName: deck_name,
-                    wins: deck_wins,
-                    losses: deck_losses
+                    wins: deck_wins || 0,
+                    losses: deck_losses || 0
                 }
               });
               dispatch(getDecks(user_id))
