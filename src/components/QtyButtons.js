@@ -1,9 +1,9 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { decrement, increment } from '../actions/deckCards'
+import { decrement, increment, remove } from '../actions/deckCards'
 
 const QtyButtons = (props) => {
     console.log("poops", props.qty)
@@ -33,6 +33,6 @@ const QtyButtons = (props) => {
 }
 // const mapStateToProps = ({ cards }) => ({ cards })
 const mapDispatchToProps = (dispatch) =>
-    bindActionCreators({ decrement, increment }, dispatch)
+    bindActionCreators({ decrement, increment, remove }, dispatch)
 
 export default withRouter(connect(null, mapDispatchToProps)(QtyButtons))

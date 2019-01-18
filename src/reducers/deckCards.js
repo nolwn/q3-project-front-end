@@ -1,4 +1,10 @@
-import { INCREMENT, DECREMENT, DECKCARDS, ADDDECKCARD } from '../actions/deckCards'
+import {
+    INCREMENT,
+    DECREMENT,
+    DECKCARDS,
+    ADDDECKCARD,
+    REMOVECARD
+} from '../actions/deckCards'
 
 const deckCards = (state = [], action) => {
     switch (action.type) {
@@ -43,6 +49,8 @@ const deckCards = (state = [], action) => {
         case ADDDECKCARD:
             return action.payload
 
+        case REMOVECARD:
+            return [ ...state ].filter(card => card.id !== action.payload)
 
         default:
             console.log("state", state)

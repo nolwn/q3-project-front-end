@@ -6,6 +6,7 @@ export const DECREMENT = 'DECREMENT'
 export const INCREMENT = "INCREMENT";
 export const DECKCARDS = 'DECKCARDS'
 export const ADDDECKCARD = 'ADDDECKCARD'
+export const REMOVECARD = 'REMOVECARD'
 
 const server = process.env.REACT_APP_API_URL
 
@@ -93,6 +94,22 @@ export const addCard = (userId, deckId, cardData) => {
     }
 };
 
-export const remove = () => {
+export const remove = (userId, deckId, cardId) => {
+    return async (dispatch) => {
+        try {
+            const deletedCard = await axios.delete(
+                server +
+                '/users/' + userId +
+                '/decks/' + deckId +
+                '/cards/' + cardId +
+                '/remove'
+            )
 
+        console.log(deletedCard)
+        dispatch({ type: REMOVECARD, payload: deletedCard.data.card_id })
+    } catch (err) {
+        console.log(err)
+    }
+
+    }
 }
