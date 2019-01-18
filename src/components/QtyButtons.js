@@ -5,14 +5,16 @@ import { connect } from 'react-redux'
 
 import { decrement, increment } from '../actions/deckCards'
 
-const QtyButtons = (props) =>
-    props.qty > 1 ?
+const QtyButtons = (props) => {
+    console.log("poops", props)
+
+    return props.qty > 1 ?
         <span className='qtyButtons'>
             <button onClick = { () => props.decrement(props.match.params.user_id, props.match.params.deck_id, props.id) }>-</button>
             <button onClick={ () => props.increment(props.match.params.user_id, props.match.params.deck_id, props.id)}>+</button>
         </span> :
         <button className='qtyButtons'>remove</button>
-
+}
 // const mapStateToProps = ({ cards }) => ({ cards })
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators({ decrement, increment }, dispatch)

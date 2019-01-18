@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const DECREMENT = 'DECREMENT';
-export const INCREMENT = "INCREMENT"
+export const INCREMENT = "INCREMENT";
 export const DECKCARDS = 'DECKCARDS';
 
 const server = process.env.REACT_APP_API_URL
