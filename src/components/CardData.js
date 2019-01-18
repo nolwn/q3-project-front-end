@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-// import './CardData.css';
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import Modal from 'react-modal';
 
+import { addCard } from '../actions/deckCards'
 
 class CardData extends Component {
     constructor(props) {
@@ -26,19 +28,19 @@ class CardData extends Component {
 
             case "U":
                 return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/9/9f/U.svg?version=99a0e26dd02040b072e33af91a6ab198' alt="water" height="20" width="20" />
-                
+
             case "G":
                 return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/88/G.svg?version=6ebca1fee33aaf3c3fc1cd39a4f782df' alt="life" height="20" width="20" />
-                
+
             case "W":
                 return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/8/8e/W.svg?version=6e6c411768c4bf5a947dfa973207799b' alt="light" height="20" width="20" />
-                
+
             case "B":
                 return <img key={id} style={{marginLeft: 3}} src='https://d1u5p3l4wpay3k.cloudfront.net/mtgsalvation_gamepedia/2/2f/B.svg?version=0a87a78acd60c4f2074a0c9e4eb651a5' alt="dark" height="20" width="20" />
-    
+
             default:
                 return <span key={id} className="label label-warning"><b>{element}</b></span>
-        } 
+        }
     }
 
     generateManaCost(cost) {
@@ -70,7 +72,7 @@ class CardData extends Component {
         return (
             <div className="row border align-items-center justify-content-around">
                 <div className="col-4"><b><a onClick={(event) =>
-                    {event.preventDefault() 
+                    {event.preventDefault()
                     this.setModal(true) }
                     } href="#">{this.props.cardData.name}</a></b></div>
                     <Modal isOpen={this.state.isOpen} onRequestClose={() => this.setModal(false)} style={customStyles} contentLabel="Example Modal">
@@ -82,22 +84,28 @@ class CardData extends Component {
                             </div>
                             <div className = "row border-bottom">
                                 <div className="col">
-                                    <img style={{marginTop: 5, marginBottom: 5}} src={this.props.cardData.imageUrl} alt={this.props.cardData.name} height="400" width="250" />  
+                                    <img style={{marginTop: 5, marginBottom: 5}} src={this.props.cardData.imageUrl} alt={this.props.cardData.name} height="400" width="250" />
                                 </div>
                             </div>
                             <div className = "row justify-content-center">
                                 <div className="col-8 align-self-center">
                                     <button style={{marginTop: 5}} type="button" className="btn btn-success">Add Card to Deck</button>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
                     </Modal>
                 <div className="col-6"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col-2"><button className="btn btn-sm btn-outline-primary">+</button> </div>
+                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, 1, this.props.cardData) }>+</button> </div>
             </div>
         )
     }
 };
 
-export default CardData;
-  
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators({ addCard }, dispatch)
+
+const mapStateToProps = ({ auth }) => {
+    return { auth }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardData);
