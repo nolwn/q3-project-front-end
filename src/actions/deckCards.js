@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import { convertCost } from '../utilities/utilities'
+
 export const DECREMENT = 'DECREMENT'
 export const DECKCARDS = 'DECKCARDS'
 export const ADDDECKCARD = 'ADDDECKCARD'
@@ -37,16 +39,25 @@ export const decrement = (userId, deckId, cardId) => {
     }
 }
 
-export const addCard = (userId, deckId, types, api_id, name) => {
-    return async (dispatch) => {
-        const reponse = await axios.post(
-            server +
-            '/users/' + userId +
-            '/decks/' + deckId +
-            'cards/create'
-        )
-        dispatch({ type: ADDDECKCARD })
-    }
+export const addCard = (userId, deckId, types, apiId, name, cost) => {
+    // return async (dispatch) => {
+        // const reponse = await axios.post(
+        //     server +
+        //     '/users/' + userId +
+        //     '/decks/' + deckId +
+        //     'cards/create'
+        // )
+
+        console.log(convertCost(userId))
+
+        // dispatch()
+        // dispatch({ type: ADDDECKCARD, payload: {
+        //     response.data.name,
+        //     response.data.qty,
+        //     response.data.}
+        // })
+
+    // }
 }
 
 export const increment = () => {
