@@ -40,6 +40,10 @@ const deckCards = (state = [], action) => {
         case DECKCARDS:
             return action.payload
 
+        case ADDDECKCARD:
+            return action.payload
+
+
         default:
             console.log("state", state)
             return state

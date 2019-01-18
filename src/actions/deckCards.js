@@ -54,20 +54,13 @@ export const increment = (userId, deckId, cardId) => {
 }
 
 export const addCard = (userId, deckId, cardData) => {
-    console.log(userId, deckId, cardData.manaCost)
-
-    console.log(convertCost(cardData.manaCost))
-    console.log(convertTypes(cardData.types, cardData.subtypes))
-
     const body = convertCost(cardData.manaCost)
     body.types = convertTypes(cardData.types, cardData.subtypes)
     body.name = cardData.name
     body.api_id = cardData.id
 
-    console.log(body)
-
     return async (dispatch) => {
-        const response = await axios.post(
+        const postResponse = await axios.post(
             server +
             '/users/' + userId +
             '/decks/' + deckId +
@@ -75,14 +68,14 @@ export const addCard = (userId, deckId, cardData) => {
             body
         )
 
-        console.log(response)
+        const getResponse = await axios.get(
+            server +
+            '/users/' + userId +
+            '/decks/' + deckId +
+            '/cards'
+        )
 
-        // dispatch()
-        // dispatch({ type: ADDDECKCARD, payload: {
-        //     response.data.name,
-        //     response.data.qty,
-        //     response.data.}
-        // })
+        dispatch({ type: ADDDECKCARD, payload: getResponse.data })
 
     }
 };
