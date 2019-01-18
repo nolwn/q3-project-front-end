@@ -22,11 +22,11 @@ export const getDeckCards = (userId, deckId) => {
                 {
                     method: "get",
                     headers: {
-                      'Content-Type': 'application/json',
-                      'Accept': 'application/json',
-                      'Authorization': `Bearer ${token}`
-                }
-              })
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
 
             dispatch({ type: DECKCARDS, payload: response.data })
 
@@ -40,20 +40,20 @@ export const decrement = (userId, deckId, cardId) => {
     return async (dispatch) => {
         try {
             const token = localStorage.getItem('token')
-            const response = await axios.patch(
+            const response = await axios(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
                 '/remove',
                 {
-                    method: "get",
+                    method: "patch",
                     headers: {
                       'Content-Type': 'application/json',
                       'Accept': 'application/json',
                       'Authorization': `Bearer ${token}`
                     }
-                  })
+                })
             dispatch({ type: DECREMENT, payload: response.data })
 
         } catch (err) {
@@ -67,20 +67,20 @@ export const increment = (userId, deckId, cardId) => {
     return async(dispatch) => {
         try {
             const token = localStorage.getItem('token')
-            const response = await axios.patch(
+            const response = await axios(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
                 '/add',
                 {
-                    method: "get",
+                    method: "patch",
                     headers: {
                       'Content-Type': 'application/json',
                       'Accept': 'application/json',
                       'Authorization': `Bearer ${token}`
                     }
-                  })
+                })
             dispatch({ type: INCREMENT, payload: response.data })
 
         }catch(err) {
@@ -97,21 +97,20 @@ export const addCard = (userId, deckId, cardData) => {
         body.api_id = cardData.id
         try {
             const token = localStorage.getItem('token')
-            await axios.post(
+            await axios(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/add',
                 {
-                    method: "get",
+                    method: "post",
                     headers: {
                       'Content-Type': 'application/json',
                       'Accept': 'application/json',
                       'Authorization': `Bearer ${token}`
-                    }
-                },
-                body
-            )
+                      },
+                      data: body
+                })
 
             const getResponse = await axios.get(
                 server +
@@ -139,14 +138,14 @@ export const remove = (userId, deckId, cardId) => {
     return async (dispatch) => {
         try {
             const token = localStorage.getItem('token')
-            const deletedCard = await axios.delete(
+            const deletedCard = await axios(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
                 '/remove',
                 {
-                    method: "get",
+                    method: "delete",
                     headers: {
                       'Content-Type': 'application/json',
                       'Accept': 'application/json',
