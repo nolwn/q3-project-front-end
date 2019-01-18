@@ -22,8 +22,8 @@ class CardView extends Component {
     };
 
     userLogOut = () => {
-        localStorage.removeItem('token');
-        this.props.setAuthentication(null);
+        localStorage.removeItem('token')
+        this.props.setAuthentication(null)
         this.props.history.push(`/`)
     };
 

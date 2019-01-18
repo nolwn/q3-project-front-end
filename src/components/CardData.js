@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Modal from 'react-modal';
 
 import { addCard } from '../actions/deckCards'
@@ -89,7 +90,7 @@ class CardData extends Component {
                     </div>
                 </Modal>
                 <span>{this.generateManaCost(manaCost)}</span>
-                <button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, 1, this.props.cardData) }>+</button>
+                <button className="btn btn-sm btn-outline-primary" onClick={ e => this.props.addCard(this.props.auth.userId, this.props.match.params.deck_id, this.props.cardData) }>+</button>
             </div>
         )
     }
@@ -102,4 +103,4 @@ const mapStateToProps = ({ auth }) => {
     return { auth }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardData);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CardData));
