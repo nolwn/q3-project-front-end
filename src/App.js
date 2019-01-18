@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className='container'>
+      <div className='container background'>
           <div className="row" >
             <div className="col border bg-light">
             {/* <h2 className="navbar-brand bg-light">Search Magic Cards</h2>

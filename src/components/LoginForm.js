@@ -26,17 +26,28 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <div className="row justify-content-center">
+            <div>
+                <div className="row border-bottom align-items-center justify-content-start">
+                    <div className="col-1 align-self-center">
+                        <img src="https://seeklogo.com/images/M/magic-the-gathering-logo-121CFC67AF-seeklogo.com.png" alt="felements" height="50" width="50" ></img>
+                    </div>
+                    <div className="col-10 align-self-center">
+                    <h1>Welcome To The Archives</h1>
+                    </div>
+                </div>
+                
+
+            <div style={{marginBottom: 10}} className="row justify-content-start">
                 <div className="col-6">
                 <form onSubmit={this.handleLogin}>
-                    <h2>Login</h2>
-                    <div className="form-row">
+                    <div className="form-row justify-content-start">
                         <div className="form-group col-md-6">
+                            <h2>Login</h2>
                             <label htmlFor="loginName">User Name</label>
                             <input type="text" className="form-control form-control-sm" name="loginName" id="loginName" placeholder="Your User Name"/>
                         </div>
                     </div>
-                        <div className="form-row">
+                        <div className="form-row justify-content-start">
                             <div className="form-group col-6">
                                 <label htmlFor="loginPassword">Password</label>
                                 <input type="password" className="form-control form-control-sm" name="loginPassword" id="loginPassword" placeholder="Password"/>
@@ -47,9 +58,9 @@ class LoginForm extends Component {
                 </div>
                 <div className="col-6">
                     <form onSubmit={this.handleCreateUser}>
-                        <h2>New Account</h2>
                         <div className="form-row">
                             <div className="form-group col-6">
+                                <h2>New Account</h2>
                                 <label htmlFor="createUser">User Name</label>
                                 <input type="text" className="form-control form-control-sm" name="createUser" id="createUser" placeholder="Enter User Name"/>
                             </div>
@@ -64,6 +75,8 @@ class LoginForm extends Component {
                     </form>
                 </div>
             </div>
+        </div>
+
         )
     }
 }

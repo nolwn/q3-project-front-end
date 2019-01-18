@@ -1,6 +1,10 @@
 .App {
   /* text-align: center; */
 }
+.background {
+  background-color: black !important
+  /* background: url(https://wallpaper.wiki/wp-content/uploads/2017/05/wallpaper.wiki-Mtg-Wallpapers-HD-PIC-WPE002487.jpg) center center no-repeat; */
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
