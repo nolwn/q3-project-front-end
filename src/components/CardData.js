@@ -98,7 +98,7 @@ class CardData extends Component {
                         </div>
                     </Modal>
                 <div className="col-6"><b>Cost: </b>{this.generateManaCost(manaCost)}</div>
-                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => addCard(this.props.cardData.manaCost) }>+</button> </div>
+                <div className="col-2"><button className="btn btn-sm btn-outline-primary" onClick={ e => addCard(this.props.cardData) }>+</button> </div>
             </div>
         )
     }

@@ -39,7 +39,7 @@ export const decrement = (userId, deckId, cardId) => {
     }
 }
 
-export const addCard = (userId, deckId, types, apiId, name, cost) => {
+export const addCard = (userId, deckId, cardData) => {
     // return async (dispatch) => {
         // const reponse = await axios.post(
         //     server +

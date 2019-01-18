@@ -25,3 +25,7 @@ export const convertCost = (cost) => {
 
     return formattedCost;
 }
+
+const formattedTypes = (types, subtypes) => {
+    return types.concat(subtypes)
+}
