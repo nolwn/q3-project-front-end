@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import {deleteDeck, viewDeck} from '../actions/decks';
+import {deleteDeck} from '../actions/decks';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 

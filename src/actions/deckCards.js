@@ -1,14 +1,13 @@
 import axios from 'axios'
 
-export const DECREMENT = 'DECREMENT'
-export const DECKCARDS = 'DECKCARDS'
-export const ADDDECKCARD = 'ADDDECKCARD'
+export const DECREMENT = 'DECREMENT';
+export const INCREMENT = "INCREMENT";
+export const DECKCARDS = 'DECKCARDS';
 
 const server = process.env.REACT_APP_API_URL
 
 export const getDeckCards = (userId, deckId) => {
     return async (dispatch) => {
-        console.log('done')
         const response = await axios.get(
             server +
             '/users/' + userId +
@@ -21,10 +20,7 @@ export const getDeckCards = (userId, deckId) => {
 }
 
 export const decrement = (userId, deckId, cardId) => {
-    console.log("decrement", userId, deckId, cardId)
     return async (dispatch) => {
-        console.log("inner decrement")
-
             const response = await axios.patch(
                 server +
                 '/users/' + userId +
@@ -32,26 +28,26 @@ export const decrement = (userId, deckId, cardId) => {
                 '/cards/' + cardId +
                 '/remove'
             )
-            console.log('response', response.data)
             dispatch({ type: DECREMENT, payload: response.data })
     }
-}
+};
 
-export const addCard = (userId, deckId, types, api_id, name) => {
-    return async (dispatch) => {
-        const reponse = await axios.post(
-            server +
-            '/users/' + userId +
-            '/decks/' + deckId +
-            'cards/create'
-        )
-        dispatch({ type: ADDDECKCARD })
+export const increment = (userId, deckId, cardId) => {
+    return async(dispatch) => {
+        try {
+            const response = await axios.patch(
+                server +
+                '/users/' + userId +
+                '/decks/' + deckId +
+                '/cards/' + cardId +
+                '/add'
+            )
+            dispatch({ type: INCREMENT, payload: response.data })
+        }catch(err) {
+            console.log(err)
+        }
     }
-}
-
-export const increment = () => {
-
-}
+};
 
 export const remove = () => {
 
