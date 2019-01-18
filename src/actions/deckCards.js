@@ -13,12 +13,20 @@ const server = process.env.REACT_APP_API_URL
 export const getDeckCards = (userId, deckId) => {
     return async (dispatch) => {
         try {
+            const token = localStorage.getItem('token')
             const response = await axios.get(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
-                '/cards'
-            )
+                '/cards',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                }
+              })
 
             dispatch({ type: DECKCARDS, payload: response.data })
 
@@ -31,13 +39,21 @@ export const getDeckCards = (userId, deckId) => {
 export const decrement = (userId, deckId, cardId) => {
     return async (dispatch) => {
         try {
+            const token = localStorage.getItem('token')
             const response = await axios.patch(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
-                '/remove'
-            )
+                '/remove',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                    }
+                  })
             dispatch({ type: DECREMENT, payload: response.data })
 
         } catch (err) {
@@ -50,13 +66,21 @@ export const decrement = (userId, deckId, cardId) => {
 export const increment = (userId, deckId, cardId) => {
     return async(dispatch) => {
         try {
+            const token = localStorage.getItem('token')
             const response = await axios.patch(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
-                '/add'
-            )
+                '/add',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                    }
+                  })
             dispatch({ type: INCREMENT, payload: response.data })
 
         }catch(err) {
@@ -72,11 +96,20 @@ export const addCard = (userId, deckId, cardData) => {
         body.name = cardData.name
         body.api_id = cardData.id
         try {
+            const token = localStorage.getItem('token')
             await axios.post(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/add',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                    }
+                },
                 body
             )
 
@@ -84,8 +117,15 @@ export const addCard = (userId, deckId, cardData) => {
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
-                '/cards'
-            )
+                '/cards',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                    }
+                })
 
             dispatch({ type: ADDDECKCARD, payload: getResponse.data })
 
@@ -98,13 +138,21 @@ export const addCard = (userId, deckId, cardData) => {
 export const remove = (userId, deckId, cardId) => {
     return async (dispatch) => {
         try {
+            const token = localStorage.getItem('token')
             const deletedCard = await axios.delete(
                 server +
                 '/users/' + userId +
                 '/decks/' + deckId +
                 '/cards/' + cardId +
-                '/remove'
-            )
+                '/remove',
+                {
+                    method: "get",
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json',
+                      'Authorization': `Bearer ${token}`
+                    }
+                  })
 
         dispatch({ type: REMOVECARD, payload: deletedCard.data.card_id })
     } catch (err) {

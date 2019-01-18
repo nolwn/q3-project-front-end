@@ -6,7 +6,7 @@ const url = process.env.REACT_APP_API_URL;
 export function getDecks(user_id) {
     return async (dispatch) => {
         try {
-            const token = localStorage.getItem('token');
+            const token = localStorage.getItem('token')
             const response = await axios(`${url}/users/${user_id}/decks`,
             {
                 method: "get",

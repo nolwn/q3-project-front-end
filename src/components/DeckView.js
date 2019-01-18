@@ -15,7 +15,16 @@ const server = process.env.REACT_APP_API_URL
 
 class CardView extends Component {
     componentDidMount = () => {
-        axios.get(`${server}/users/${this.props.match.params.user_id}/decks/${this.props.match.params.deck_id}/cards`)
+        const token = localStorage.getItem('token')
+        axios.get(`${server}/users/${this.props.match.params.user_id}/decks/${this.props.match.params.deck_id}/cards`,
+            {
+                method: "get",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                }
+            })
             .then(response => {
                 this.props.getDeckCards(this.props.match.params.user_id, this.props.match.params.deck_id)
             })
