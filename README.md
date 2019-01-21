@@ -25,6 +25,8 @@ On the Deck Details page users have 3 columns, The left column lists the current
 
 The Add Card Search Field access the MTG-API and allowsusers to search thousands of cards by name and set. Users can click on the card title to see the actual card and then add it to their Deck.
 
+![Messaging as user unpacks](./screenshots/APISearch.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
