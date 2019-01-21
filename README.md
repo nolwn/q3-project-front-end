@@ -1,3 +1,30 @@
+//////////////////////THE ARCHIVES MTG DECK BUILDER//////////////////////////
+Front-End react Application for The Achives website
+
+The Archives is a customizable Magic The Gathering Deck Builder and card search resource site.
+
+
+## Setup
+
+The Archives runs entirely in browser, and is free of charge. Access at https://intense-atoll-40600.herokuapp.com/. No installation is required; user's information will be stored in a Heroku database. User needs only to create an account and sign in on the landing page.
+
+
+## How-to
+
+Upon arriving at the login page users are prompted to either create a new account or login to an existing one.
+
+![Messaging as user unpacks](./screenshots/login.png)
+
+Users will then be taken to their Decks page. Here they can see a list of decks they have created and create a new deck if they so choose. By clicking on the name of the deck they'll be taken to the Deck Details page.
+
+![Messaging as user unpacks](./screenshots/decksList.png)
+
+On the Deck Details page users have 3 columns, The left column lists the current cards that have been added to the deck. The center column which calculates the mana curve for their deck based on the total mana cost for all cards added to the deck and finally the Add Card search field.
+
+![Messaging as user unpacks](./screenshots/deckDetails.png)
+
+The Add Card Search Field access the MTG-API and allowsusers to search thousands of cards by name and set. Users can click on the card title to see the actual card and then add it to their Deck.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
