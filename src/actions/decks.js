@@ -70,3 +70,55 @@ export function deleteDeck(id, user_id) {
         }
     }
 }
+
+export function addWin(id, user_id, deck_name, win_count, loss_count) {
+    return async (dispatch) => {
+        try {
+            const newVal = win_count + 1;
+            const token = localStorage.getItem('token');
+            await axios(`${url}/users/${user_id}/decks/${id}`,
+            {
+                method: "put",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                data: {
+                    deckName: deck_name,
+                    wins: newVal,
+                    losses: loss_count
+                }
+              });
+              dispatch(getDecks(user_id))
+        }catch(err) {
+            console.log(err)
+        }
+    }
+}
+
+export function addLoss(id, user_id, deck_name, win_count, loss_count) {
+    return async (dispatch) => {
+        try {
+            const newVal = loss_count + 1;
+            const token = localStorage.getItem('token');
+            await axios(`${url}/users/${user_id}/decks/${id}`,
+            {
+                method: "put",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                data: {
+                    deckName: deck_name,
+                    wins: win_count,
+                    losses: newVal
+                }
+              });
+              dispatch(getDecks(user_id))
+        }catch(err) {
+            console.log(err)
+        }
+    }
+}
