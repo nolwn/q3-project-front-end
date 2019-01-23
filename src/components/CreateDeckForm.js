@@ -16,7 +16,13 @@ class CreateDeckForm extends Component {
              event.target.deckWins.value,
              event.target.deckLosses.value,
              this.props.match.params.user_id
-             )
+             );
+
+        event.target.deckName.value = '';
+        event.target.deckWins.value = 0;
+        event.target.deckLosses.value = 0;
+
+        this.props.hideForm();
     }; 
 
 

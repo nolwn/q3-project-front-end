@@ -4,7 +4,8 @@ import CreateDeckForm from './CreateDeckForm';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getDecks} from '../actions/decks';
-import {setAuthentication} from '../actions/authentication'
+import {setAuthentication} from '../actions/authentication';
+const sortBy = require('sort-by')
 
 class ListofDecks extends Component {
     constructor(props) {
@@ -28,10 +29,6 @@ class ListofDecks extends Component {
             );
     }
 
-    viewDecks = () => {
-        // this.push.history.push(`user/${this.props.match.params.user_id}/decks/${}`)
-    }
-
     componentDidMount() {
         this.props.getDecks(this.props.match.params.user_id, () => this.props.history.push('/'));
     }
@@ -43,7 +40,7 @@ class ListofDecks extends Component {
     };
 
     render() {
-        const decks = this.props.decks;
+        const decks = this.props.decks.sort(sortBy('-updated_at'));
         const user = this.props.decks[0] || "test";
         return(
             <div className="container">
@@ -63,7 +60,7 @@ class ListofDecks extends Component {
                     </div>
                 </div>
                 {
-                    this.state.createDeck ? <CreateDeckForm /> : null
+                    this.state.createDeck ? <CreateDeckForm hideForm={this.toggleCreateDeckField} /> : null
                 }
 
                 {
