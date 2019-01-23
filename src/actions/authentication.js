@@ -2,6 +2,7 @@ import axios from "axios";
 const url = process.env.REACT_APP_API_URL;
 
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION';
+export const SET_USER_NAME = 'SET_USER_NAME'
 
 export const setAuthentication = claim => ({
   type: SET_AUTHENTICATION,
@@ -60,6 +61,26 @@ export const login = (user_name, password, fn) => {
     }catch(err) {
       console.error(err)
       dispatch(setAuthentication(null))
+    }
+  }
+};
+
+export const getUser = (userId) => {
+  return async (dispatch) => {
+    try{
+      const response = await axios(`${url}/users/${userId}`, {
+        method: "get",
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
+      });
+      dispatch({
+        type: SET_USER_NAME,
+        payload: response
+      })
+    }catch(err) {
+      console.log(err)
     }
   }
 }
