@@ -4,7 +4,7 @@ import CreateDeckForm from './CreateDeckForm';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getDecks} from '../actions/decks';
-import {setAuthentication} from '../actions/authentication';
+import {setAuthentication, getUser} from '../actions/authentication';
 const sortBy = require('sort-by')
 
 class ListofDecks extends Component {
@@ -31,6 +31,7 @@ class ListofDecks extends Component {
 
     componentDidMount() {
         this.props.getDecks(this.props.match.params.user_id, () => this.props.history.push('/'));
+        this.props.getUser(this.props.match.params.user_id);
     }
 
     toggleCreateDeckField = () => {
@@ -41,12 +42,11 @@ class ListofDecks extends Component {
 
     render() {
         const decks = this.props.decks.sort(sortBy('-updated_at'));
-        const user = this.props.decks[0] || "test";
         return(
             <div className="container">
                 <div style={{marginBottom: 10, marginTop: 10}} className="row justify-content-between">
                     <div className="col-6 align-items-center">
-                        <h2>{user.user_name}'s Decks</h2>
+                        <h2>{this.props.userName || "User"}'s Decks</h2>
                     </div>
                     <div className="col-4 align-items-center">
                         <div className="btn-group btn-group-toggle">
@@ -73,12 +73,13 @@ class ListofDecks extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({getDecks, setAuthentication},dispatch)
+    return bindActionCreators({getDecks, setAuthentication, getUser},dispatch)
 }
 
 const mapStateToProps = (state) => {
     return {
-        decks: state.decks
+        decks: state.decks,
+        userName: state.auth.userName
     }
 }
 

@@ -6,7 +6,7 @@ The Archives is a customizable Magic The Gathering Deck Builder and card search 
 
 ## Setup
 
-The Archives runs entirely in browser, and is free of charge. Access at https://intense-atoll-40600.herokuapp.com/. No installation is required; user's information will be stored in a Heroku database. User needs only to create an account and sign in on the landing page.
+The Archives runs entirely in browser, and is free of charge. Access at http://the-archives-mtg.herokuapp.com/. No installation is required; user's information will be stored in a Heroku database. User needs only to create an account and sign in on the landing page.
 
 
 ## How-to

@@ -68,16 +68,18 @@ export const login = (user_name, password, fn) => {
 export const getUser = (userId) => {
   return async (dispatch) => {
     try{
+      const token = localStorage.getItem('token');
       const response = await axios(`${url}/users/${userId}`, {
         method: "get",
-        header: {
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
         }
       });
       dispatch({
         type: SET_USER_NAME,
-        payload: response
+        payload: response.data.result
       })
     }catch(err) {
       console.log(err)
