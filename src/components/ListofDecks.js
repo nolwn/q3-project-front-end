@@ -41,7 +41,9 @@ class ListofDecks extends Component {
     };
 
     render() {
+        console.log(this.props.decks)
         const decks = this.props.decks.sort(sortBy('-updated_at'));
+        console.log(decks)
         return(
             <div className="container">
                 <div style={{marginBottom: 10, marginTop: 10}} className="row justify-content-between">
