@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getDecks} from '../actions/decks';
 import {setAuthentication, getUser} from '../actions/authentication';
-const sortBy = require('sort-by')
 
 class ListofDecks extends Component {
     constructor(props) {
