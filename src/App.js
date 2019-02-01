@@ -17,12 +17,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className='container background'>
+      <div className='container'>
           <div className="row" >
             <div className="col border bg-light">
-            {/* <h2 className="navbar-brand bg-light">Search Magic Cards</h2>
-              <SearchForm />
-              <CardList foundCards = {this.props.cards} /> */}
               <Switch>
                 <AuthenticatedRoute path='/user_id/:user_id/decks/:deck_id' component={DeckView} />
                 <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
