@@ -19,13 +19,11 @@ class App extends Component {
       <BrowserRouter>
       <div className='container'>
           <div className="row" >
-            <div className="col border bg-light">
               <Switch>
                 <AuthenticatedRoute path='/user_id/:user_id/decks/:deck_id' component={DeckView} />
                 <AuthenticatedRoute path='/user_id/:user_id/decks' component={ListofDecks} />
                 <Route path='/' component={LoginForm}/>
               </Switch>
-              </div>
           </div>
       </div>
     </BrowserRouter>
